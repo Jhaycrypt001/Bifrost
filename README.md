@@ -1,36 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌈 Bifrost | Sovereign Cross-Chain Settlement
 
-## Getting Started
+Bifrost is a decentralized payment gateway built directly on the KiraPay engine. We remove intermediaries by allowing merchants to generate intent links in seconds, while customers pay with any asset on any chain—settled instantly.
 
-First, run the development server:
+## 🚀 The Vision
+Cross-chain payments today are slow, custodial, and expose merchant data. Bifrost leverages the **KiraPay Protocol** to find the optimal liquidity routing path, providing a seamless, high-speed checkout experience for Web3 commerce.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Key Features
+* **KiraPay Routing Log:** A live dashboard terminal that tracks KiraPay non-custodial solver nodes routing settlements in real-time.
+* **Universal Liquidity:** Customers connect native wallets (Solana, MetaMask) to pay via Sol, Base, or Ethereum.
+* **ZK-Stealth Mode:** A one-click privacy shield that instantly masks merchant revenue analytics and transaction logs from physical screen-snooping.
+* **The Smart Ledger:** A real-time, double-entry accounting system that tracks customer test balances and live merchant settlement volume simultaneously.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧠 Architecture
+Bifrost is built natively to showcase the power of KiraPay. Instead of relying on traditional, fragmented bridges, the platform utilizes KiraPay's backend to handle the complex cross-chain pathfinding required for secure, sovereign settlement.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 💻 Tech Stack
+* **Frontend:** React, Next.js, Tailwind CSS, Framer Motion
+* **Web3 Integration:** `@solana/wallet-adapter`, Native EVM (`window.ethereum`)
+* **Infrastructure:** KiraPay Protocol Engine
