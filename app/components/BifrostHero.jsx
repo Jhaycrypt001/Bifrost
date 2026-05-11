@@ -2,7 +2,7 @@
 /* eslint-disable */
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, LayoutDashboard, PlusCircle, Globe, ShieldCheck, CheckCircle2, Layers, Lock, Code, ArrowUpRight, X, ExternalLink, Copy } from 'lucide-react';
 import { useWallet } from '@solana/wallet-adapter-react';
@@ -73,6 +73,15 @@ export default function BifrostApp() {
   const [view, setView] = useState('landing'); 
   const [productTitle, setProductTitle] = useState("Creator Masterclass");
   const [activeLink, setActiveLink] = useState(null);
+  const backgroundVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (backgroundVideoRef.current) {
+      backgroundVideoRef.current.play().catch(() => {
+        // In some browsers, autoplay may require user interaction; still allow muted playback.
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (connected && view === 'landing') {
@@ -98,7 +107,7 @@ export default function BifrostApp() {
       <style>{globalStyles}</style>
       
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <video className="w-full h-full object-cover opacity-[0.15] grayscale" autoPlay loop muted playsInline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_063509_7d167302-4fd4-480b-8260-18ab572333d4.mp4" />
+        <video ref={backgroundVideoRef} className="w-full h-full object-cover opacity-[0.15] grayscale" autoPlay loop muted playsInline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_063509_7d167302-4fd4-480b-8260-18ab572333d4.mp4" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20" />
         <div className="fusion-blur-shape" />
       </div>
