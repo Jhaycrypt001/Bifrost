@@ -192,7 +192,7 @@ const LandingPage = ({ onStart, productTitle, setProductTitle }) => {
 
   return (
     <div className="relative w-full z-10">
-      <section className="relative h-[90vh] md:min-h-screen w-full flex flex-col pt-20 md:pt-24 pb-6 lg:pb-0">
+      <section className="relative min-h-[60vh] md:min-h-screen w-full flex flex-col pt-28 md:pt-24 pb-4 lg:pb-0">
         <nav className="absolute top-0 left-0 w-full p-4 md:p-8 lg:p-10 flex justify-between items-center z-50 bg-gradient-to-b from-black via-black/80 to-transparent">
           <div className="flex items-center gap-2 md:gap-3">
             <div className="w-3 h-3 md:w-4 md:h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.4)]" />
@@ -240,8 +240,8 @@ const LandingPage = ({ onStart, productTitle, setProductTitle }) => {
           </div>
         </div>
       </section>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 space-y-20 md:space-y-40 pb-20 md:pb-40 mt-[-5vh] md:mt-0">
+<div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 space-y-12 md:space-y-40 pb-20 md:pb-40 mt-4 md:mt-0">
+      
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="pt-10 md:pt-20">
           <p className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.4em] text-purple-400 mb-3 md:mb-6 text-center">The Paradigm Shift</p>
           <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center italic mb-8 md:mb-16">Sovereign settlement.<br/>Zero intermediaries.</h2>
