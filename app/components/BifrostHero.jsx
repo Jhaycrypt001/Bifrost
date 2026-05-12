@@ -119,10 +119,10 @@ export default function BifrostApp() {
         
         {view === 'connecting' && <BridgeSequence key="connecting" walletName={walletName} />}
         
-        {view === 'dashboard' && (
+        {(view === 'dashboard' || view === 'checkout_preview' || view === 'live_customer_portal') && (
           <Dashboard 
             key="dashboard" 
-            address={addressShort} 
+            address={addressShort}
             onBack={handleDisconnect} 
             onSimulateCheckout={(link) => { setActiveLink(link); setView('checkout_preview'); }}
             onOpenLivePortal={(link) => { setActiveLink(link); setView('live_customer_portal'); }}
@@ -401,19 +401,19 @@ const Dashboard = ({ address, onBack, onSimulateCheckout, onOpenLivePortal }) =>
 
   const deductBalance = (chain, amount, productName) => {
     const key = getChainKey(chain);
-    setBalances(prev => ({
-      ...prev,
-      [key]: Math.max(0, prev[key] - amount)
-    }));
-    const txn = {
-      id: Date.now(),
-      chain,
-      product: productName,
-      amount,
-      timestamp: new Date().toLocaleTimeString(),
-      remaining: Math.max(0, balances[key] - amount)
-    };
-    setTransactions(prev => [txn, ...prev]);
+    setBalances(prev => {
+      const newBalance = Math.max(0, prev[key] - amount);
+      const txn = {
+        id: Date.now(),
+        chain,
+        product: productName,
+        amount: parseFloat(amount),
+        timestamp: new Date().toLocaleTimeString(),
+        remaining: newBalance
+      };
+      setTransactions(t => [txn, ...t]);
+      return { ...prev, [key]: newBalance };
+    });
   };
 
   const handleResetChainBalance = (chain) => {
@@ -443,7 +443,7 @@ const Dashboard = ({ address, onBack, onSimulateCheckout, onOpenLivePortal }) =>
   const totalTestSpend = transactions.filter(t => t.product !== 'BALANCE RESET').reduce((sum, t) => sum + t.amount, 0);
   const conversionRate = transactions.length > 0 ? (realPayments.length / transactions.length * 100).toFixed(1) : 0;
 
-  const chainPerformance = ['Base', 'Eth', 'Sol'].map(chain => {
+  const chainPerformance = ['Base', 'Eth', 'Solana'].map(chain => {
     const chainPayments = realPayments.filter(p => p.chain === chain);
     const chainRevenue = chainPayments.reduce((sum, p) => sum + p.amount, 0);
     const chainTests = transactions.filter(t => t.chain === chain && t.product !== 'BALANCE RESET').length;
