@@ -73,7 +73,7 @@ export default function BifrostApp() {
   const [view, setView] = useState('landing'); 
   const [productTitle, setProductTitle] = useState("Creator Masterclass");
   const [activeLink, setActiveLink] = useState(null);
-  const backgroundVideoRef = useRef(null);
+ const backgroundVideoRef = useRef(null);
 
   useEffect(() => {
     if (backgroundVideoRef.current) {
@@ -195,9 +195,7 @@ const LandingPage = ({ onStart, productTitle, setProductTitle }) => {
       <section className="relative h-[90vh] md:min-h-screen w-full flex flex-col pt-20 md:pt-24 pb-6 lg:pb-0">
         <nav className="absolute top-0 left-0 w-full p-4 md:p-8 lg:p-10 flex justify-between items-center z-50 bg-gradient-to-b from-black via-black/80 to-transparent">
           <div className="flex items-center gap-2 md:gap-3">
-            <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-gradient-to-br from-purple-400 via-fuchsia-500 to-white shadow-[0_0_20px_rgba(168,85,247,0.35)] flex items-center justify-center">
-              <span className="text-[8px] md:text-[10px] font-black uppercase text-black">B</span>
-            </div>
+            <div className="w-3 h-3 md:w-4 md:h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.4)]" />
             <span className="text-sm md:text-xl font-bold tracking-tighter italic uppercase">bifrost</span>
           </div>
           <button onClick={onStart} className="bg-white text-black px-5 md:px-8 py-2 md:py-3 rounded-full text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] hover:invert transition-all">
