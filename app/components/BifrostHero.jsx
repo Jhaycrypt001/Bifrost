@@ -195,7 +195,9 @@ const LandingPage = ({ onStart, productTitle, setProductTitle }) => {
       <section className="relative h-[90vh] md:min-h-screen w-full flex flex-col pt-20 md:pt-24 pb-6 lg:pb-0">
         <nav className="absolute top-0 left-0 w-full p-4 md:p-8 lg:p-10 flex justify-between items-center z-50 bg-gradient-to-b from-black via-black/80 to-transparent">
           <div className="flex items-center gap-2 md:gap-3">
-            <div className="w-4 h-4 md:w-6 md:h-6 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)]" />
+            <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-gradient-to-br from-purple-400 via-fuchsia-500 to-white shadow-[0_0_20px_rgba(168,85,247,0.35)] flex items-center justify-center">
+              <span className="text-[8px] md:text-[10px] font-black uppercase text-black">B</span>
+            </div>
             <span className="text-sm md:text-xl font-bold tracking-tighter italic uppercase">bifrost</span>
           </div>
           <button onClick={onStart} className="bg-white text-black px-5 md:px-8 py-2 md:py-3 rounded-full text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] hover:invert transition-all">
@@ -227,7 +229,7 @@ const LandingPage = ({ onStart, productTitle, setProductTitle }) => {
 
             <div className="w-[50%] lg:w-[40%] flex justify-end items-center">
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} 
-                className="w-full origin-right scale-[0.6] sm:scale-75 md:scale-90 lg:scale-100 max-w-[360px]"
+                className="w-full origin-right scale-100 sm:scale-75 md:scale-90 lg:scale-100 max-w-[360px]"
               >
                 <BifrostCheckoutWidget 
                   productName={productTitle} 
@@ -268,7 +270,6 @@ const LandingPage = ({ onStart, productTitle, setProductTitle }) => {
                 <h3 className="text-sm md:text-2xl font-bold mb-1 md:mb-2">Intent Architecture</h3>
                 <p className="text-white/40 max-w-[200px] md:max-w-sm text-[9px] md:text-sm">Build real autonomous use cases on Layer 1 infrastructure.</p>
               </div>
-              <Code className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 w-24 h-24 md:w-64 md:h-64 text-white/5 group-hover:text-purple-500/10 transition-colors" />
             </div>
             <div className="col-span-1 md:col-span-4 glass-card rounded-[20px] md:rounded-[40px] p-5 md:p-10 flex flex-col justify-between bg-purple-900/10 border-purple-500/20">
               <Lock className="w-5 h-5 md:w-8 md:h-8 text-purple-400 mb-2 md:mb-4" />
@@ -1032,14 +1033,16 @@ const BifrostCheckoutWidget = ({ productName, priceUsd, availableChains = ['Sola
 
       ) : (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex-1 flex flex-col">
-          <div className="flex justify-between items-start mb-6 md:mb-8">
-            <div className="max-w-[140px] md:max-w-[200px]">
-              <h3 className="text-base md:text-xl font-bold tracking-tight truncate uppercase italic">{productName}</h3>
-              <p className="text-[7px] md:text-[9px] text-white/20 uppercase tracking-[0.3em] md:tracking-[0.4em] mt-1 md:mt-2">Powered by KiraPay</p>
+          <div className="grid grid-cols-2 gap-2 md:gap-4 mb-4 md:mb-6">
+            <div>
+              <h3 className="text-sm md:text-xl font-bold tracking-tight uppercase italic break-words leading-snug">{productName}</h3>
+              <p className="text-[7px] md:text-[9px] text-white/20 uppercase tracking-[0.2em] mt-1">Powered by KiraPay</p>
             </div>
-            <div className="text-xl md:text-3xl font-light tracking-tighter">${priceUsd}</div>
+            <div className="flex items-start justify-end">
+              <div className="text-lg md:text-3xl font-light tracking-tighter">${priceUsd}</div>
+            </div>
           </div>
-          
+
           <div className="space-y-2 md:space-y-3 mb-auto">
             {availableChains.map(c => {
               const isActive = selectedChain === c;
