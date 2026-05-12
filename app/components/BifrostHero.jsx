@@ -73,7 +73,7 @@ export default function BifrostApp() {
   const [view, setView] = useState('landing'); 
   const [productTitle, setProductTitle] = useState("Creator Masterclass");
   const [activeLink, setActiveLink] = useState(null);
-  const backgroundVideoRef = useRef<HTMLVideoElement | null>(null);
+  const backgroundVideoRef = useRef(null);
 
   useEffect(() => {
     if (backgroundVideoRef.current) {
